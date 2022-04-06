@@ -1,31 +1,18 @@
 import React, {Component} from "react";
 import ErrorIndicator from "../error-indicator";
 import ItemList from "../item-list";
-import PersonDetails from "../person-details";
 import SwapiService from "../../services/swapi-service";
-
+import Row from "../row/row";
+import ErrorBoundry from "../error-boundry";
 import './people-page.css';
-
-const Row = ({left, right}) => {
-    return (
-        <div className="row mb2">
-        <div className="col-md-6">
-           {left}
-        </div>
-        <div className="col-md-6">
-            {right}
-        </div>
-    </div>
-    );
-};
+import ItemDetails from "../item-details/item-details";
 
 export default class PeoplePage extends Component {
 
     swapiService = new SwapiService();
 
     state = {
-        selectedPerson: 3,
-        hasError: false
+        selectedPerson: 3
     };
     
     onPersonSelected = (id) => {
@@ -35,11 +22,7 @@ export default class PeoplePage extends Component {
     };
 
 
-    componentDidCatch(error, info) {
-        this.setState({
-            hasError: true
-        });
-    }
+
 
     render() {
         if (this.state.hasError) {
@@ -47,13 +30,21 @@ export default class PeoplePage extends Component {
         }
 
         const itemList = (
-            <ItemList onItemSelected={this.onPersonSelected} 
-            getData={this.swapiService.getAllPeople}
-            renderItem={({name, gender, birthYear}) => `${name} (${gender}, ${birthYear})`} />
+            <ItemList 
+                onItemSelected={this.onPersonSelected} 
+                getData={this.swapiService.getAllPeople}>
+
+                {(item) => (
+                    `${item.name} (${item.birthYear})`
+                )}
+                
+            </ItemList>
         );
 
         const personDetails = (
-            <PersonDetails personId={this.state.selectedPerson} />
+            <ErrorBoundry>
+                <ItemDetails personId={this.state.selectedPerson} />
+            </ErrorBoundry>
         )
 
         return (
