@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import './hoc.css';
 import ErrorIndicator from "../error-indicator";
 import Spinner from "../spinner/spinner";
 
