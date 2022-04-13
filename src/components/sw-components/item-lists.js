@@ -1,15 +1,7 @@
 import React from "react";
 import ItemList from '../item-list';
-import {withData} from '../hoc';
-import SwapiService from "../../services/swapi-service";
+import {withData, withSwapiService} from '../hoc';
 
-const swapiService = new SwapiService();
-
-const {
-    getAllPeople,
-    getAllStarships,
-    getAllPlanets
-} = swapiService;
 
 const withChildFunction = (Wrapped, fn) => {
     return (props) => {
@@ -24,16 +16,36 @@ const withChildFunction = (Wrapped, fn) => {
 
 const renderName = ({name}) => <span>{name}</span>;
 const renderNameAndModel = ({name, model}) => <span>{name} ({model})</span>
+const mapPersonMethodsToProps = (swapiService) => {
+    return {
+        getData: swapiService.getAllPeople
+    };
+};
 
-const PersonList = withData(
-                            withChildFunction(ItemList, renderName), 
-                            getAllPeople);
-const PlanetList = withData(
-                            withChildFunction(ItemList, renderName), 
-                            getAllPlanets);
-const StarshipList = withData(
-                            withChildFunction(ItemList, renderNameAndModel), 
-                            getAllStarships);
+const mapPlanetMethodsToProps = (swapiService) => {
+    return {
+        getData: swapiService.getAllPlanets
+    };
+};
+
+const mapStarshipMethodsToProps = (swapiService) => {
+    return {
+        getData: swapiService.getAllStarships
+    };
+};
+
+const PersonList = withSwapiService(
+                        withData(
+                            withChildFunction(ItemList, renderName)),
+                        mapPersonMethodsToProps);
+const PlanetList = withSwapiService(
+                        withData(
+                            withChildFunction(ItemList, renderName)),
+                        mapPlanetMethodsToProps);
+const StarshipList = withSwapiService(
+                        withData(
+                            withChildFunction(ItemList, renderNameAndModel)),
+                        mapStarshipMethodsToProps);
 
 export {
     PersonList,

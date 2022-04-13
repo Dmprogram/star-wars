@@ -1,24 +1,31 @@
 import React, {Component} from "react";
-import ErrorIndicator from "../error-indicator";
 import Spinner from "../spinner/spinner";
 
-const withData = (View, getData) => {
+const withData = (View) => {
     return class extends Component {
 
         state = {
             data: null
         };
+        
+        componentDidUpdate(prevProps) {
+            if (this.props.getData !== prevProps.getData) {
+                this.update()
+            }
+        };
     
         componentDidMount() {
-        
-            getData()
+            this.update();
+        };
+    
+        update() {
+            this.props.getData()
             .then((data) => {
                 this.setState({
                     data
                 });
             });
-        };
-    
+        }
 
         render() {
             const {data} = this.state;
