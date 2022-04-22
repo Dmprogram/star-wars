@@ -3,10 +3,10 @@ import { StarshipList} from '../sw-components';
 import { useNavigate } from "react-router-dom";
 
 const StarshipsPage = () => { 
-    const hist = useNavigate();
+    const nav = useNavigate();
     return(
         <StarshipList 
-            onItemSelected={(itemId) => hist(`/starships/${itemId}`)} />
+            onItemSelected={(id) => nav(id)} />
     );
 };
 
