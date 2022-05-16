@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import './header.css';
 
-const Header = ({onServiceChange}) => {
+const Header = () => {
     return (
         <div className="header d-flex">
             <h3>
@@ -21,18 +21,7 @@ const Header = ({onServiceChange}) => {
                 <li>
                     <Link to='/starships'>Starships</Link>
                 </li>
-                <li>
-                    <Link to='/login'>Login</Link>
-                </li>
-                <li>
-                    <Link to='/secret'>Secret</Link>
-                </li>
             </ul>
-            <button
-                onClick={onServiceChange}
-                className="btn btn-primary btn-sm" >
-                Change Service
-            </button>
         </div>
     );
 };

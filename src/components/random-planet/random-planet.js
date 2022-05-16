@@ -17,7 +17,7 @@ export default class RandomPlanet extends Component {
   };
 
   static defaultProps = {
-    updateInterval: 3333
+    updateInterval: 5000
   };
 
   static propTypes = {

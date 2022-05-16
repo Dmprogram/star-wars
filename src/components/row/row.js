@@ -1,5 +1,5 @@
 import React from "react";
-import './row.css';
+
 import PropTypes from 'prop-types';
 
 const Row = ({left, right}) => {

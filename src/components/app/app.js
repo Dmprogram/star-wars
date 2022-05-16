@@ -10,11 +10,8 @@ import { StarshipDetails } from "../sw-components";
 import {
   PeoplePage, 
   PlanetsPage,
-  StarshipsPage,
-  LoginPage,
-  SecretPage} from "../pages";
-
-import DummySwapiService from "../../services/dummy-swapi-service";
+  StarshipsPage
+} from "../pages";
 
 import { BrowserRouter, Route, Routes, } from "react-router-dom";
 
@@ -32,35 +29,19 @@ export default class App extends Component {
       });
     };
 
-    onServiceChange = () => {
-      this.setState(({swapiService}) => {
-        const Service = swapiService instanceof SwapiService ? 
-                          DummySwapiService : SwapiService;
-
-        console.log('swithced', Service.name);
-        
-        return {
-          swapiService: new Service()
-        };
-      });
-      
-    };
-
       componentDidCatch() {
         this.setState({hasError: true});
 
       }
 
     render() {
-
-      const {isLoggedIn} = this.state;
       
       return (
         <ErrorBoundry>
           <SwapiServiceProvider value={this.state.swapiService}>
             <BrowserRouter>
               <div className="stardb-app">
-                <Header onServiceChange={this.onServiceChange} />
+                <Header />
                 <RandomPlanet />
                 <Routes>
                   <Route path="/" element={<h2>Welcome to Star-Wars</h2>} /> 
@@ -69,8 +50,6 @@ export default class App extends Component {
                   <Route path="/planets" element={<PlanetsPage />} />
                   <Route path="/starships" element={<StarshipsPage />} />
                   <Route path="/starships/:id" element={<StarshipDetails />} />
-                  <Route path="/login" element={<LoginPage isLoggedin={isLoggedIn} onLogin={this.onLogin} />}/>
-                  <Route path="/secret" element={<SecretPage isLoggedIn={isLoggedIn}/>}/>
                   <Route path="*" element={<h2>Page not found</h2>} />
                 </Routes>
               </div>

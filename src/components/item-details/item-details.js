@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import ErrorButton from '../error-button/error-button';
-
 import './item-details.css';
 
 
@@ -77,7 +75,6 @@ export default class ItemDetails extends Component {
               })
             }
           </ul>
-          <ErrorButton />
         </div>
       </div>
     )
