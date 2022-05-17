@@ -6,8 +6,6 @@ import {
     withChildFunction,
     compose} from '../hoc';
 
-
-
 const renderName = ({name}) => <span>{name}</span>;
 const renderNameAndModel = ({name, model}) => <span>{name} ({model})</span>
 const mapPersonMethodsToProps = (swapiService) => {

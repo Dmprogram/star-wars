@@ -7,11 +7,11 @@ const PeoplePage = () => {
     const nav = useNavigate();
     const {id} = useParams();
 
-        return(
-            <Row
-                left = {<PersonList onItemSelected={(id) => nav(`/people/${id}`)} />}
-                right = {<PersonDetails itemId={id} /> } />
-        );
+    return(
+        <Row
+            left = {<PersonList onItemSelected={(id) => nav(`/people/${id}`)} />}
+            right = {<PersonDetails itemId={id} /> } />
+    );
 
 };
 

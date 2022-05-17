@@ -9,3 +9,14 @@
 .stardb-app .row {
   margin-bottom: 1rem;
 }
+
+.stardb-app h1 {
+  margin-top: 100px;
+  color: rgb(226, 226, 7);
+  text-align: center;
+}
+
+.stardb-app h2 {
+  color: white;
+  text-align: center;
+}

@@ -7,7 +7,6 @@ export default class SwapiService {
   
     getResourse = async (url) => {
       const res = await fetch(`${this._apiBase}${url}`);
-  
       if(!res.ok) {
         throw new Error(`Could not fetch ${url}`+
         `, received ${res.status}`)
@@ -16,7 +15,7 @@ export default class SwapiService {
     };
   
     getAllPeople = async () => {
-      const res = await this.getResourse(`/people`);
+      const res = await this.getResourse(`/people/`);
       return res.results.map(this._transformPerson);
     };
     getPerson = async (id) => {
@@ -26,7 +25,9 @@ export default class SwapiService {
   
     getAllPlanets = async () => {
       const res = await this.getResourse(`/planets`);
-      return res.results.map(this._transformPlanet);
+      return res.results
+      .map(this._transformPlanet)
+      .slice(1);
     };
   
     getPlanet = async (id) => {
@@ -36,7 +37,9 @@ export default class SwapiService {
   
     getAllStarships = async () => {
       const res = await this.getResourse(`/starships`);
-      return res.results.map(this._transformStarship);
+      return res.results
+      .map(this._transformStarship)
+      .slice(2, 9);
     };
   
     getStarship = async (id) => {
@@ -55,16 +58,13 @@ export default class SwapiService {
     getPlanetImage = ({id}) => {
       return `${this._imageBase}/planets/${id}.jpg`
     }
-  
-  
-  
+
     _extractId = (item) => {
       const idRegExp = /\/([0-9]*)\/$/;
       return item.url.match(idRegExp)[1];
     };
 
     _transformPlanet = (planet) => {
-      
       return {
         id: this._extractId(planet),
         name: planet.name,
@@ -80,7 +80,7 @@ export default class SwapiService {
         name: starship.name,
         model: starship.model,
         manufacturer: starship.manufacturer,
-        costInCredits: starship.costInCredits,
+        costInCredits: starship.cost_in_credits,
         length: starship.length,
         crew: starship.crew,
         passengers: starship.passengers,

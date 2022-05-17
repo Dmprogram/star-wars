@@ -20,8 +20,3 @@ const mapMethodsToProps = (swapiService) => {
 }
 
 export default withSwapiService(mapMethodsToProps)(PersonDetails);
-
-{/* <ItemDetails 
-itemId={itemId} 
-getData={getData}
-getImageUrl={getImageUrl} > */}
