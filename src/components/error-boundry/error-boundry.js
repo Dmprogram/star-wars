@@ -1,24 +1,24 @@
-import React, {Component} from "react";
-import './error-boundry.css';
+import React, { Component } from "react";
 import ErrorIndicator from "../error-indicator";
 
 export default class ErrorBoundry extends Component {
+  state = {
+    hasError: false,
+  };
 
-    state = {
-        hasError: false
+  componentDidCatch() {
+    this.setState({
+      hasError: true,
+    });
+  }
+
+  render() {
+    // eslint-disable-next-line react/prop-types
+    const { children } = this.props;
+    const { hasError } = this.state;
+    if (hasError) {
+      return <ErrorIndicator />;
     }
-
-    componentDidCatch(error, info) {
-        this.setState({
-            hasError: true
-        });
-    }
-
-    render() {
-
-        if(this.state.hasError) {
-            return <ErrorIndicator />
-        };
-        return this.props.children;
-    }
+    return children;
+  }
 }

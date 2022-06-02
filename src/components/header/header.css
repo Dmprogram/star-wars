@@ -1,35 +1,33 @@
 .header {
-    margin-top: 1rem;
-    padding-left: 18px;
-  }
-  
-  .header ul li {
-    list-style: none;
-    margin: 0;
-    padding: .5rem 1rem;
-    border-radius: 3px;
-  }
+  margin-top: 1rem;
+  padding-left: 18px;
+}
 
-  .header ul li a{
-    color: rgb(226, 226, 7);
-  }
-  
-  .header ul li:hover {
-    background-color: #444;
-  }
+.header ul li {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+}
 
-  .header a:hover {
-    background-color: #444;
-    color: #00bc8c;
-    text-decoration: none;
-  }
-  
-  .header h3 a {
-    list-style: none;
-    margin: 0;
-    padding: .5rem 1rem;
-    border-radius: 3px;
-    color: rgb(226, 226, 7);
-  }
-  
+.header ul li a {
+  color: rgb(226, 226, 7);
+}
 
+.header ul li:hover {
+  background-color: #444;
+}
+
+.header a:hover {
+  background-color: #444;
+  color: #00bc8c;
+  text-decoration: none;
+}
+
+.header h3 a {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  color: rgb(226, 226, 7);
+}

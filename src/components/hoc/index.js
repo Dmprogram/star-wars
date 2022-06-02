@@ -3,9 +3,4 @@ import withSwapiService from "./with-swapi-service";
 import compose from "./compose";
 import withChildFunction from "./with-child-function";
 
-export {
-    compose,
-    withChildFunction,
-    withData,
-    withSwapiService
-};
+export { compose, withChildFunction, withData, withSwapiService };
