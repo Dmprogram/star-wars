@@ -24,6 +24,10 @@ const mapVehicleMethodsToProps = (swapiService) => ({
   getData: swapiService.getAllVehicles,
 });
 
+const mapSpecieMethodsToProps = (swapiService) => ({
+  getData: swapiService.getAllSpecies,
+});
+
 const PersonList = compose(
   withSwapiService(mapPersonMethodsToProps),
   withData,
@@ -44,5 +48,10 @@ const VehicleList = compose(
   withData,
   withChildFunction(renderNameAndModel)
 )(ItemList);
+const SpecieList = compose(
+  withSwapiService(mapSpecieMethodsToProps),
+  withData,
+  withChildFunction(renderName)
+)(ItemList);
 
-export { PersonList, StarshipList, PlanetList, VehicleList };
+export { PersonList, StarshipList, PlanetList, VehicleList, SpecieList };

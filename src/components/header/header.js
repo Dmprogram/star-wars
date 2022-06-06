@@ -22,6 +22,9 @@ function Header() {
         <li>
           <Link to="vehicles">Vehicles</Link>
         </li>
+        <li>
+          <Link to="species">Species</Link>
+        </li>
       </ul>
     </div>
   );

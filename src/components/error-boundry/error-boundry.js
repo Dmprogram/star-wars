@@ -13,7 +13,6 @@ export default class ErrorBoundry extends Component {
   }
 
   render() {
-    // eslint-disable-next-line react/prop-types
     const { children } = this.props;
     const { hasError } = this.state;
     if (hasError) {
