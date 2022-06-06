@@ -7,7 +7,7 @@ import RandomPlanet from "../random-planet";
 import SwapiService from "../../services/swapi-service";
 import ErrorBoundry from "../error-boundry";
 import { SwapiServiceProvider } from "../swapi-service-context";
-import { PeoplePage, PlanetsPage, StarshipsPage } from "../pages";
+import { PeoplePage, PlanetsPage, StarshipsPage, VehiclePage } from "../pages";
 
 export default class App extends Component {
   state = {
@@ -31,6 +31,8 @@ export default class App extends Component {
                 <Route path="/planets/:id" element={<PlanetsPage />} />
                 <Route path="/starships" element={<StarshipsPage />} />
                 <Route path="/starships/:id" element={<StarshipsPage />} />
+                <Route path="/vehicles" element={<VehiclePage />} />
+                <Route path="/vehicles/:id" element={<VehiclePage />} />
                 <Route path="*" element={<h2>Page not found</h2>} />
               </Routes>
             </div>

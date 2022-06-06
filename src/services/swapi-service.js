@@ -41,11 +41,23 @@ export default class SwapiService {
     return this._transformStarship(starship);
   };
 
+  getAllVehicles = async () => {
+    const res = await this.getResourse("/vehicles");
+    return res.results.map(this._transformVehicle);
+  };
+
+  getVehicle = async (id) => {
+    const vehicle = await this.getResourse(`/vehicles/${id}/`);
+    return this._transformVehicle(vehicle);
+  };
+
   getPersonImage = ({ id }) => `${this._imageBase}/characters/${id}.jpg`;
 
-  getStarshipImage = (item) => `${this._imageBase}/starships/${item.id}.jpg`;
+  getStarshipImage = ({ id }) => `${this._imageBase}/starships/${id}.jpg`;
 
   getPlanetImage = ({ id }) => `${this._imageBase}/planets/${id}.jpg`;
+
+  getVehicleImage = ({ id }) => `${this._imageBase}/vehicles/${id}.jpg`;
 
   _extractId = (item) => {
     const idRegExp = /\/([0-9]*)\/$/;
@@ -80,5 +92,14 @@ export default class SwapiService {
     gender: person.gender,
     birthYear: person.birth_year,
     eyeColor: person.eye_color,
+  });
+
+  _transformVehicle = (vehicle) => ({
+    id: this._extractId(vehicle),
+    name: vehicle.name,
+    model: vehicle.model,
+    crew: vehicle.crew,
+    passengers: vehicle.passengers,
+    length: vehicle.length,
   });
 }
