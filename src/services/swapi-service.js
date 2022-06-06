@@ -71,6 +71,7 @@ export default class SwapiService {
 
   getSpecieImage = ({ id }) => `${this._imageBase}/species/${id}.jpg`;
 
+  // eslint-disable-next-line class-methods-use-this
   _extractId = (item) => {
     const idRegExp = /\/([0-9]*)\/$/;
     return item.url.match(idRegExp)[1];

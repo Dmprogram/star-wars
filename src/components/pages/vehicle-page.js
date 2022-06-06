@@ -9,7 +9,11 @@ function VehiclePage() {
 
   return (
     <Row
-      left={<VehicleList onItemSelected={(id) => nav(`/vehicles/${id}`)} />}
+      left={
+        <VehicleList
+          onItemSelected={(vehicleId) => nav(`/vehicles/${vehicleId}`)}
+        />
+      }
       right={<VehicleDetails itemId={id} />}
     />
   );

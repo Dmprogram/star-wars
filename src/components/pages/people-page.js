@@ -9,7 +9,9 @@ function PeoplePage() {
 
   return (
     <Row
-      left={<PersonList onItemSelected={(id) => nav(`/people/${id}`)} />}
+      left={
+        <PersonList onItemSelected={(humanId) => nav(`/people/${humanId}`)} />
+      }
       right={<PersonDetails itemId={id} />}
     />
   );

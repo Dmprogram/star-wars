@@ -9,7 +9,11 @@ function SpeciePage() {
 
   return (
     <Row
-      left={<SpecieList onItemSelected={(id) => nav(`/species/${id}`)} />}
+      left={
+        <SpecieList
+          onItemSelected={(specieId) => nav(`/species/${specieId}`)}
+        />
+      }
       right={<SpecieDetails itemId={id} />}
     />
   );

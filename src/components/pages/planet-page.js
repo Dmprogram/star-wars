@@ -9,7 +9,11 @@ function PlanetsPage() {
 
   return (
     <Row
-      left={<PlanetList onItemSelected={(id) => nav(`/planets/${id}`)} />}
+      left={
+        <PlanetList
+          onItemSelected={(planetId) => nav(`/planets/${planetId}`)}
+        />
+      }
       right={<PlanetDetails itemId={id} />}
     />
   );

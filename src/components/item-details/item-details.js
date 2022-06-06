@@ -24,10 +24,11 @@ export default class ItemDetails extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    const { itemId, getData, getImageUrl } = this.props;
     if (
-      this.props.itemId !== prevProps.itemId ||
-      this.props.getData !== prevProps.getData ||
-      this.props.getImageUrl !== prevProps.getImageUrl
+      itemId !== prevProps.itemId ||
+      getData !== prevProps.getData ||
+      getImageUrl !== prevProps.getImageUrl
     ) {
       this.updateItem();
     }
@@ -58,6 +59,7 @@ export default class ItemDetails extends Component {
     }
 
     const { name } = item;
+    const { children } = this.props;
 
     return (
       <div className="item-details card">
@@ -66,7 +68,7 @@ export default class ItemDetails extends Component {
         <div className="card-body">
           <h4>{name}</h4>
           <ul className="list-group list-group-flush">
-            {React.Children.map(this.props.children, (child) =>
+            {React.Children.map(children, (child) =>
               React.cloneElement(child, { item })
             )}
           </ul>

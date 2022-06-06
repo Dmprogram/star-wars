@@ -15,18 +15,19 @@ const withData = (View) =>
     }
 
     componentDidUpdate(prevProps) {
-      if (this.props.getData !== prevProps.getData) {
+      const { getData } = this.props;
+      if (getData !== prevProps.getData) {
         this.update();
       }
     }
 
     update() {
+      const { getData } = this.props;
       this.setState({
         loading: true,
         error: false,
       });
-      this.props
-        .getData()
+      getData()
         .then((data) => {
           this.setState({
             data,

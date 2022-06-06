@@ -9,7 +9,11 @@ function StarshipsPage() {
 
   return (
     <Row
-      left={<StarshipList onItemSelected={(id) => nav(`/starships/${id}`)} />}
+      left={
+        <StarshipList
+          onItemSelected={(starshipId) => nav(`/starships/${starshipId}`)}
+        />
+      }
       right={<StarshipDetails itemId={id} />}
     />
   );

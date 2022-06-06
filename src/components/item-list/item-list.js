@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from "react";
 import "./item-list.css";
 import PropTypes from "prop-types";
@@ -10,12 +11,10 @@ function ItemList(props) {
     const label = renderLabel(item);
 
     return (
-      <li
-        className="list-group-item"
-        key={id}
-        onClick={() => onItemSelected(id)}
-      >
-        {label}
+      <li className="list-group-item" key={id}>
+        <div role="button" tabIndex={0} onClick={() => onItemSelected(id)}>
+          {label}
+        </div>
       </li>
     );
   });
